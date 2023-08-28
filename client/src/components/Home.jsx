@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import Loader from "./Loader";
+import { DetailsContext } from "../context/DetailsContext";
 
 const Home = () => {
 
-    const handleSubmit = () => {alert('Send ETH')};
+    const {connectWallet, account, handleChange, handleSubmit, isLoading} = useContext(DetailsContext);
+    //console.log(account);
+
+    const makeItShort = (str) => {
+        return str.slice(0, 6) + "..." + str.slice(str.length - 4, str.length);
+    };
 
   return (
     <div className="main_container">
         <div className="section_container">
             <div className="leftSection">
-                <h1>Send and Receive cryptocurrencies easily on CryptoSend</h1>
-                <p>Fast and easy - you want to be more secure send and receives.</p>
-                {true ? (  
-                    <button className="btn connect-btn">Connect Account</button>
-                ) : null}
+                <h1>Send and receive cryptocurrencies easily.</h1>
+                <p>Fast and easy - for you who want to send and receive your cryptos safely and quickly.</p>
+                {!account && (  
+                    <button className="btn connect-btn" onClick={connectWallet}>Connect Account</button>
+                )}
             </div>
             <div className="rightSection">
                 <div className="inputBox">
-                    <p>Account Number:</p>
+                    {account && <p>Account: {makeItShort(account)}</p>}
                     <input 
                     type="text" 
                     placeholder="Receiver's address" 
@@ -38,12 +44,12 @@ const Home = () => {
                     onChange={(e) => handleChange(e)} 
                     />
                     <hr />
-                    {   
-                        false ? ( <Loader /> 
-                        ) : (
+                    {isLoading ? (
+                        <Loader />
+                    ) : (
                         <button className="btn send-btn" onClick={handleSubmit}>
-                        Send Eth
-                    </button>
+                            Send Eth
+                        </button>
                     )}
                 </div>
             </div>

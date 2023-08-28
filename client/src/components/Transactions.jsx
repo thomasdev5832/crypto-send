@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DetailsContext } from "../context/DetailsContext";
 
 const Transactions = () => {
+
+    const { transactions } = useContext(DetailsContext);
+
+    const makeItShort = (str) => {
+        return str.slice(0, 6) + "..." + str.slice(str.length - 4, str.length);
+    };
+
   return (
     <div>
         <div className="transaction-header">
@@ -20,23 +28,36 @@ const Transactions = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td className="text-left">
-                        <a>Text</a>
-                    </td>
-                    <td className="text-left">
-                        <a>Text</a>
-                    </td>
-                    <td className="text-left">
-                        <a>Text</a>
-                    </td>
-                    <td className="text-left">
-                        <a>Text</a>
-                    </td>
-                    <td className="text-left">
-                        <a>Text</a>
-                    </td>
-                </tr>
+            {transactions &&
+            transactions.map((transaction, idx) => (
+              <tr>
+                <td className="text-left">
+                  <a
+                    href={`https://sepolia.etherscan.io/address/${transaction.sender}`}
+                    target="_blank"
+                  >
+                    {makeItShort(transaction.sender)}
+                  </a>
+                </td>
+                <td className="text-left">
+                  <a
+                    href={`https://sepolia.etherscan.io/address/${transaction.receiver}`}
+                    target="_blank"
+                  >
+                    {makeItShort(transaction.receiver)}
+                  </a>
+                </td>
+                <td className="text-left">{transaction.message}</td>
+                <td className="text-left">
+                  {parseInt(transaction.amount._hex) / 10 ** 18}
+                </td>
+                <td className="text-left">
+                  {new Date(
+                    transaction.timestamp.toNumber() * 1000
+                  ).toLocaleString()}
+                </td>
+              </tr>
+            ))}
                 
             </tbody>
         </table>
@@ -44,4 +65,4 @@ const Transactions = () => {
   )
 };
 
-export default Transactions
+export default Transactions;
