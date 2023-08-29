@@ -10,7 +10,7 @@ const Transactions = () => {
     };
 
   return (
-    <div>
+    <div className="table-full" id="transactions">
         <div className="transaction-header">
             <h1>
                 Transactions

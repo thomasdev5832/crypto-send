@@ -7,6 +7,8 @@ import Footer from './components/Footer';
 
 function App() {
 
+  document.title = "CryptoSend";
+
   return (
     <div className='app'>
       <div className='screen-size'>

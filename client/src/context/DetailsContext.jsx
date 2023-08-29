@@ -78,7 +78,7 @@ const DetailsProvider = ({children}) => {
             setIsLoading(true);
             await transactionHash.wait();
             setIsLoading(false);
-
+            window.location.reload();
         } catch (err) {
             console.log(err);
         }
@@ -133,7 +133,8 @@ const DetailsProvider = ({children}) => {
             const account = await window.ethereum.request({
                 method: "eth_requestAccounts"
             });
-            setAccount(account[0])
+            setAccount(account[0]);
+            window.location.reload();
 
         } catch (err) {
             console.log(err);
