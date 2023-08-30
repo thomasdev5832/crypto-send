@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 
 function App() {
 
-  document.title = "CryptoSend";
+  document.title = "CryptoSend - Send and receive cryptos easily";
 
   return (
     <div className='app'>
