@@ -43,7 +43,6 @@ a {
   font-size: 16px;
   font-weight: bold;
   margin: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Navbar */
@@ -118,7 +117,6 @@ nav ul li a:hover {
 .login-btn:hover{
   cursor: pointer;
   background-color: rgb(41, 41, 41);
-  box-shadow: white;
 }
 
 /* Home */
@@ -231,14 +229,16 @@ input:focus {
 }
 
 .send-btn {
-  background-color: #1a1a1a;
+  background: linear-gradient(233deg,#09b388,#687fb8,#40f9ad,#2a96b9,#14d189);
+  background-size: 300% 300%;
+  animation: gradient-animation 10s ease infinite;
   color: white;
   margin: 10px;
   gap: .5rem;
   display: flex;
   align-items: center;
   text-align: center;
-  transition: background .5s ease-in-out;
+  transition: background .3s ease-in-out;
 }
 
 .send-btn:hover {
