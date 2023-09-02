@@ -8,6 +8,14 @@ html {
   animation: gradient-animation 25s ease infinite;
   margin: none;
   padding: none;
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 
+  "cv11", "salt", "ss01", "ss03",
+   "cv01", "cv02", "cv03", "cv04",
+   "cv05", "cv06", "cv09", "cv10" ;
 }
 
 
@@ -16,6 +24,7 @@ html {
   background: linear-gradient(233deg,#28136b,#687fb8,#40f9ad,#2a96b9,#bcdff5);
   background-size: 300% 300%;
   animation: gradient-animation 25s ease infinite;
+  
   
 }
 
